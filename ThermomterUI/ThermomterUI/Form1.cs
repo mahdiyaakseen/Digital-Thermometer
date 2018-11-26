@@ -194,13 +194,13 @@ namespace ThermomterUI
                 {
                     //set polling time time interval 
 
-                    // query system date format SYSTem: DATE: FORMat ?
+                    // query system date format 
                     comPort.Write("SYSTem: DATE: FORMat ?");
-                    // query system date - SYSTem :DATE?
+                    // query system date 
                     comPort.Write("SYSTem: DATE?");
 
 
-                    // query system time - SYSTem :TIME?
+                    // query system time 
                     comPort.Write("SYSTem :TIME?");
                     // display to ui
                     //rtbTimeAndDateDisplay.Text = timeAndDate.ToString();
@@ -233,6 +233,11 @@ namespace ThermomterUI
         private void SetText(string text)
         {
             this.rtbIncoming.Text += text;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

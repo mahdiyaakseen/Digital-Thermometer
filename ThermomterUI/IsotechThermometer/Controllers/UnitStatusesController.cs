@@ -10,47 +10,47 @@ namespace IsotechThermometer.Controllers
     public class UnitStatusesController : Controller
     {
 
-        public UnitStatus unitStatus ;
+        public UnitStatus unitStatus ;       
 
         // GET: UnitStatuses/GetStatus
-        [Route("UnitStatuses/GetStatus/{StatusType}")]
-        public ActionResult GetStatus(string StatusType) 
+        [Route("UnitStatuses/GetStatus/{StatusName}")]
+        public ActionResult GetStatus(string StatusName) 
         {
             //set status to true or false
-            var unitStatus = StatusTypeSwitch(StatusType);
+            unitStatus = StatusTypeSwitch(StatusName);
             return View(unitStatus);
         }
 
 
-        // GET: UnitStatuses/GetStatus
-        [Route("UnitStatuses/SetStatus/{StatusType}")]
-        public ActionResult SetStatus(string StatusType)
-        {
-            //set status to true or false
-            var unitStatus = StatusTypeSwitch(StatusType); 
-            return View(unitStatus);
-        }
+        //// GET: UnitStatuses/GetStatus
+        //[Route("UnitStatuses/SetStatus/{StatusName}")]
+        //public ActionResult SetStatus(string StatusName)
+        //{
+        //    //set status to true or false
+        //    var unitStatus = StatusTypeSwitch(StatusName, true); 
+        //    return View(unitStatus);
+        //}
 
-        private UnitStatus StatusTypeSwitch(string unitStatusType)
+        private UnitStatus StatusTypeSwitch(string unitStatusName)
         {
             var unitStatus = new UnitStatus();
-            switch (unitStatusType)
+            switch (unitStatusName)
             {
                 case "SelfTest":
                     unitStatus.Name = "Self Test";
-                    //get /set selftest status
+                    //call method to get selftest status
                     break;
                 case "Beeper":
                     unitStatus.Name = "Beeper" ;
-                    //get/set Beeper status
+                    //call method to get selftest status
                     break;
                 case "BackLight":
                     unitStatus.Name = "Back Light";
-                    //get/set blacklight status
+                    //call method to get selftest status
                     break;
                 case "TimeAndDateLogging":
                     unitStatus.Name = "Time And Date Logging" ;
-                    //get/set TimeandDate status
+                    //call method to get selftest status
                     break;
                 default:
                     //do nothing

@@ -8,20 +8,24 @@ namespace IsotechThermometer.Models
     public class UnitTask
     {
         public int Id { get; set; }
+        // example - initiate self test , get data from serial buffer etc.,
         public string Name { get; set; }
-        public UnitStatus StatusType { get; set; } = new UnitStatus();  //Self Test , Beeper etc.,
+        //Self Test , Beeper etc.,
+        public UnitStatus StatusType { get; set; } = new UnitStatus();
+        // tristate - ongoing , completed, not started 
         public TaskState TaskState { get; set; }
-        public Boolean DataRecievedState { get; set; }
+        // indicated if data has been recieved from the serial link
+        public Boolean DataReceivedState { get; set; }    
         public string Data { get; set; }
 
-        //contructor 
+        //constructor to initialise unit task defaults
         public UnitTask()
         {
             Id = 0;
             Name = string.Empty;
             StatusType = new UnitStatus() {Id=0, Name= string.Empty, State=false, StateToggled=false};
             TaskState = TaskState.NotStarted;
-            DataRecievedState = false;
+            DataReceivedState = false;
             Data = string.Empty;
         }
     }    
@@ -29,7 +33,7 @@ namespace IsotechThermometer.Models
     public enum TaskState :byte
     {     
         NotStarted = 0,
-        Inaction = 1,
+        Ongoing = 1,
         Completed = 2
     }
 }
